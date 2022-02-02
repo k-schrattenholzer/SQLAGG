@@ -7,11 +7,15 @@ SELECT
 FROM
   customer
 INNER JOIN
+  rental
+ON 
+  rental.customer_id = customer.customer_id
+INNER JOIN
   payment 
 ON
-  customer.customer_id = payment.customer_id
+  rental.rental_id = payment.rental_id
 GROUP BY
-  customer.customer_id
+  customer.email
 ORDER BY
   RANK ASC
 ;
